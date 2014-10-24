@@ -6,6 +6,7 @@ en UDP simple
 """
 
 import SocketServer
+import sys
 
 
 class EchoHandler(SocketServer.DatagramRequestHandler):
@@ -18,8 +19,11 @@ class EchoHandler(SocketServer.DatagramRequestHandler):
         self.wfile.write("Hemos recibido tu peticion")
         while 1:
             # Leyendo línea a línea lo que nos envía el cliente
-            line = self.rfile.read()
-            print "El cliente nos manda " + line
+            #line = self.rfile.read()
+            line = ""
+            IP = self.rfile.read()
+            Puerto = self.rfile.read()
+            print "El cliente nos manda " + IP + Puerto
             if not line:
                 break
 
