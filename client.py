@@ -24,7 +24,7 @@ my_socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
 my_socket.connect((SERVER, PORT))
 
 print "Enviando: " + LINE
-my_socket.send(LINE + '\r\n')
+my_socket.send(IP + " " + Puerto + " " + '\r\n')
 print IP
 print Puerto
 
