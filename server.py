@@ -13,8 +13,9 @@ dicc = {}
 class SIPRegisterHandler(SocketServer.DatagramRequestHandler):
     """
     server class
-    """
-
+    """   
+    
+    
     def handle(self):
         # Escribe dirección y puerto del cliente (de tupla client_address)
         self.wfile.write("Hemos recibido tu peticion ")
@@ -26,17 +27,13 @@ class SIPRegisterHandler(SocketServer.DatagramRequestHandler):
         Line = self.rfile.read()
         Line1 = Line.split()
         Line2 = Line1[1].split(":")
-        Login = Line2[1]
-        print Line1[3]
-        print Login  
+        Login = Line2[1]  
         dicc[Login] = IP
-        print dicc
         while 1:
             #if, evalua expire (tiempo) 
             if Line1[3] == '0':
                 if Login in dicc:
                     del dicc[Login]
-                    print dicc
                     self.wfile.write("SIP/1.0 200 OK\r\n\r\n")
                     break
             else:
